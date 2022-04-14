@@ -592,6 +592,12 @@ function defaults()
         label: "Show jouyou readings"
     });
     settings.push({
+        id: "kanji_show_chinese_readings",
+        kind: "checkbox",
+        default: false,
+        label: "Show chinese readings"
+    });
+    settings.push({
         id: "kanji_show_composition",
         kind: "checkbox",
         default: true,
@@ -602,6 +608,12 @@ function defaults()
         kind: "checkbox",
         default: true,
         label: "Show data quality warning"
+    });
+    settings.push({
+        id: "kanji_show_unihan_definition",
+        kind: "checkbox",
+        default: false,
+        label: "Show Unihan kDefinition field value"
     });
     
     // hotkeys

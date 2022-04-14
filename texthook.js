@@ -52,10 +52,12 @@ y_dodge: 0,
 sticky_maxheight: 0,
 kanji_show_stroke_count: true,
 kanji_show_readings: true,
+kanji_show_chinese_readings: false,
 kanji_show_composition: true,
 kanji_show_quality_warning: true,
 hotkey_mine: "m",
 hotkey_nazeka_toggle: "j",
+kanji_show_unihan_definition: false,
 hotkey_close: "n",
 hotkey_sticky: "b",
 hotkey_audio: "p",
@@ -1277,6 +1279,24 @@ function build_div_kanji(text, kanjidata, moreText, index)
         add_readings(onyomi, kanjidata["ks"]);
         readings.appendChild(onyomi);
     }
+
+    if(settings.kanji_show_chinese_readings)
+    {
+        if("y" in kanjidata)
+        {
+            let pinlu = document.createElement("div");
+            pinlu.innerText = "Pinyin: ";
+            add_readings(pinlu, kanjidata["y"]);
+            readings.appendChild(pinlu);
+        }
+        if("t" in kanjidata)
+        {
+            let tang = document.createElement("div");
+            tang.innerText = "Tang: ";
+            add_readings(tang, kanjidata["t"]);
+            readings.appendChild(tang);
+        }
+    }
     
     let composition = document.createElement("div");
     composition.textContent = "Composition: " + kanjidata["z"];
@@ -1296,6 +1316,13 @@ function build_div_kanji(text, kanjidata, moreText, index)
         tail.appendChild(document.createTextNode("Composition might not render correctly if it contains obscure characters."));
     }
     tail.style.marginBottom = "4px";
+
+    if(settings.kanji_show_unihan_definition && "d" in kanjidata)
+    {
+        let kDefinition = document.createElement("div");
+        kDefinition.textContent = "Unihan gloss: " + kanjidata["d"];
+        tail.appendChild(kDefinition);
+    }
     
     target.appendChild(head);
     target.appendChild(info);
