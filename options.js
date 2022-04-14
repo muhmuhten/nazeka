@@ -606,7 +606,7 @@ function defaults()
     settings.push({
         id: "kanji_show_quality_warning",
         kind: "checkbox",
-        default: true,
+        default: false,
         label: "Show data quality warning"
     });
     settings.push({
@@ -624,13 +624,13 @@ function defaults()
     settings.push({
         id: "hotkey_mine",
         kind: "text",
-        default: "m",
+        default: "mx",
         label: "Mining UI hotkey"
     });
     settings.push({
         id: "hotkey_nazeka_toggle",
         kind: "text",
-        default: "j",
+        default: "F3",
         label: "Toggle nazeka on/off"
     });
     settings.push({
@@ -675,13 +675,13 @@ function defaults()
         min: 0.0,
         max: 1.0,
         step: 0.05,
-        default: 0.2,
+        default: 0.8,
         label: "Audio playback volume (press \"p\" while popup is open)"
     });
     settings.push({
         id: "audio_force_https",
         kind: "checkbox",
-        default: false,
+        default: true,
         label: "Grab audio files over HTTPS instead of HTTP"
     });
     
